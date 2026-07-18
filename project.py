@@ -2,12 +2,17 @@ import tkinter as tk
 import webbrowser
 from tkinter import ttk
 
-def validate():
-    pass
-
 def switch_frame(show, hide):
     hide.pack_forget()
     show.pack(fill="both", expand=True)
+
+def redirect(num):
+    links = [
+        "https://www.sss.gov.ph/become-an-sss-member/",
+        "https://memberinquiry.philhealth.gov.ph/member/pinApplication.xhtml",
+        "https://www.pagibigfundservices.com/virtualpagibig/Membership.aspx",
+        ]
+    webbrowser.open(links[num])
 
 def main():
     # set root widget
@@ -18,7 +23,7 @@ def main():
     # set the bg color and size then call the widgets
     root.configure(background="#FFFFFF")
     root.resizable(False, False)
-    widgets = get_widgets(root)
+    widgets, widgets2 = get_widgets(root)
 
     # run the GUI
     widgets.pack(fill="both", expand=True)
@@ -78,7 +83,54 @@ def get_widgets(parent):
                      bg="white")
     label.pack(pady=20)
 
-    # define all the 3 buttons and the return button
+    # SSS
+    button = tk.Button(reg_frame,
+                        text="SSS", 
+                        font=("Arial", 11, "bold"), 
+                        width=13,
+                        relief="raised",
+                        bg="#a9d6e5",
+                        activebackground="white",
+                        activeforeground="#a9d6e5",
+                        fg="white",
+                        command=lambda: redirect(0),
+                        cursor="hand2",
+                        bd=0,
+                        padx=30)
+    button.place(x=159, y=100)
+
+    # Philhealth
+    button = tk.Button(reg_frame,
+                        text="PHILHEALTH", 
+                        font=("Arial", 11, "bold"), 
+                        width=13,
+                        relief="raised",
+                        bg="#a9d6e5",
+                        activebackground="white",
+                        activeforeground="#a9d6e5",
+                        fg="white",
+                        command=lambda: redirect(1),
+                        cursor="hand2",
+                        bd=0,
+                        padx=30)
+    button.place(x=159, y=140)
+    
+    # Pagibig
+    button = tk.Button(reg_frame,
+                        text="PAGIBIG", 
+                        font=("Arial", 11, "bold"), 
+                        width=13,
+                        relief="raised",
+                        bg="#a9d6e5",
+                        activebackground="white",
+                        activeforeground="#a9d6e5",
+                        fg="white",
+                        command=lambda: redirect(2),
+                        cursor="hand2",
+                        bd=0,
+                        padx=30)
+    button.place(x=159, y=180)
+
     button = tk.Button(reg_frame,
                         text="⬅️ Return to Menu", 
                         font=("Arial", 11, "bold"), 
@@ -94,7 +146,7 @@ def get_widgets(parent):
                         padx=30)
     button.pack(pady=20, side="bottom")
 
-    return main_frame
+    return main_frame, reg_frame
 
 if __name__ == "__main__":
     main()
