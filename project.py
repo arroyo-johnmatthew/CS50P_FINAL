@@ -29,7 +29,6 @@ def main():
     widgets.pack(fill="both", expand=True)
     root.mainloop()
 
-
 def get_widgets(parent):
     # =====================    MAIN FRAME  ============================= 
     main_frame = tk.Frame(parent)
@@ -52,7 +51,6 @@ def get_widgets(parent):
                     activebackground="white",
                     activeforeground="#a9d6e5",
                     fg="white",
-                    command=lambda: switch_frame(reg_frame, main_frame),
                     cursor="hand2",
                     bd=0,
                     padx=20)
@@ -132,19 +130,18 @@ def get_widgets(parent):
     button.place(x=159, y=180)
 
     button = tk.Button(reg_frame,
-                        text="⬅️ Return to Menu", 
-                        font=("Arial", 11, "bold"), 
-                        width=13,
-                        relief="raised",
-                        bg="#a9d6e5",
-                        activebackground="white",
-                        activeforeground="#a9d6e5",
-                        fg="white",
-                        command=lambda: switch_frame(main_frame, reg_frame),
-                        cursor="hand2",
-                        bd=0,
-                        padx=30)
-    button.pack(pady=20, side="bottom")
+                    text="⬅️ Return to Menu", 
+                    font=("Arial", 11, "bold"), 
+                    relief="flat",
+                    activebackground="white",
+                    activeforeground="#5c5d5e",
+                    bg="white",
+                    fg="#5c5d5e",
+                    command=lambda: switch_frame(main_frame, reg_frame),
+                    cursor="hand2",
+                    bd=0,
+                    padx=20)
+    button.pack(pady=15, side="bottom")
 
     return main_frame, reg_frame
 
