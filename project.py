@@ -1,4 +1,5 @@
 import tkinter as tk
+import webbrowser
 from tkinter import ttk
 
 def validate():
@@ -13,11 +14,20 @@ def main():
     root = tk.Tk()
     root.geometry("500x350")
     root.title("Corporate Buddy")
+
+    # set the bg color and size then call the widgets
     root.configure(background="#FFFFFF")
     root.resizable(False, False)
+    widgets = get_widgets(root)
 
+    # run the GUI
+    widgets.pack(fill="both", expand=True)
+    root.mainloop()
+
+
+def get_widgets(parent):
     # =====================    MAIN FRAME  ============================= 
-    main_frame = tk.Frame(root)
+    main_frame = tk.Frame(parent)
     main_frame.configure(bg="white")
 
     # set the text
@@ -37,7 +47,7 @@ def main():
                     activebackground="white",
                     activeforeground="#a9d6e5",
                     fg="white",
-                    command=lambda: switch_frame(val_frame, main_frame),
+                    command=lambda: switch_frame(reg_frame, main_frame),
                     cursor="hand2",
                     bd=0,
                     padx=20)
@@ -51,16 +61,25 @@ def main():
                     activeforeground="#5c5d5e",
                     bg="white",
                     fg="#5c5d5e",
-                    command=lambda: switch_frame(val_frame, main_frame),
+                    command=lambda: switch_frame(reg_frame, main_frame),
                     cursor="hand2",
                     bd=0,
                     padx=20)
     button.pack(pady=15, side="bottom")
 
-    # =====================    VALIDATION FRAME  =============================  
-    val_frame = tk.Frame(root)
-    val_frame.config(bg="white")
-    button = tk.Button(val_frame,
+    # =====================    REGISTER FRAME  =============================  
+    reg_frame = tk.Frame(parent)
+    reg_frame.config(bg="white")
+
+    # set the label (Click to Register)
+    label = tk.Label(reg_frame, 
+                     text="Click to Register", 
+                     font=("Arial", 21, "bold"), 
+                     bg="white")
+    label.pack(pady=20)
+
+    # define all the 3 buttons and the return button
+    button = tk.Button(reg_frame,
                         text="⬅️ Return to Menu", 
                         font=("Arial", 11, "bold"), 
                         width=13,
@@ -69,15 +88,13 @@ def main():
                         activebackground="white",
                         activeforeground="#a9d6e5",
                         fg="white",
-                        command=lambda: switch_frame(main_frame, val_frame),
+                        command=lambda: switch_frame(main_frame, reg_frame),
                         cursor="hand2",
                         bd=0,
                         padx=30)
     button.pack(pady=20, side="bottom")
 
-    # run the GUI
-    main_frame.pack(fill="both", expand=True)
-    root.mainloop()
+    return main_frame
 
 if __name__ == "__main__":
     main()
