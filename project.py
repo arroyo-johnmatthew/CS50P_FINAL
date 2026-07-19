@@ -72,8 +72,41 @@ def get_widgets(parent):
     button.pack(pady=15, side="bottom")
 
     # =====================    REGISTER FRAME  =============================  
-    tax_frame = tk.Frame(parent)
-    tax_frame.config(bg="white")
+    tax_frame = tk.Frame(parent, bg="white")
+
+    # tax calculator input (nested frame)
+    nested_frame_1 = tk.Frame(tax_frame, bg="#a8dadc", relief="groove")
+    nested_frame_1.place(x=10, y=50, height=200, width=230)
+
+    # Monthly Salary label
+    label = tk.Label(nested_frame_1, 
+                     text="Monthly Salary", 
+                     bg="#a8dadc", 
+                     font=("Arial", 11, "bold"))
+    label.pack(pady=(40, 9))
+
+    # input field
+    entry = tk.Entry(nested_frame_1, relief="flat", justify="center")
+    entry.pack(pady=10)
+    
+    # submit button
+    button = tk.Button(nested_frame_1,
+                        text="Submit", 
+                        font=("Arial", 8, "bold"), 
+                        width=10,
+                        relief="raised",
+                        activebackground="#a9d6e5",
+                        activeforeground="white",
+                        bg="#1d3557",
+                        fg="white",
+                        cursor="hand2",
+                        bd=0,
+                        padx=5)
+    button.pack()
+
+    # display deductions (nested frame)
+    nested_frame_2 = tk.Frame(tax_frame, bg="#a8dadc", pady=10, height=200, width=230, padx=1)
+    nested_frame_2.place(x=258, y=50)
 
     button = tk.Button(tax_frame,
                     text="⬅️ Return to Menu", 
@@ -88,7 +121,7 @@ def get_widgets(parent):
                     bd=0,
                     padx=20)
     button.pack(pady=15, side="bottom")
-    
+
     # =====================    REGISTER FRAME  =============================  
     reg_frame = tk.Frame(parent)
     reg_frame.config(bg="white")
