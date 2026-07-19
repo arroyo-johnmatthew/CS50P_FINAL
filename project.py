@@ -71,7 +71,7 @@ def get_widgets(parent):
                     padx=20)
     button.pack(pady=15, side="bottom")
 
-    # =====================    REGISTER FRAME  =============================  
+    # =====================    TAX FRAME  =============================  
     tax_frame = tk.Frame(parent, bg="white")
 
     # tax calculator input (nested frame)
@@ -105,8 +105,45 @@ def get_widgets(parent):
     button.pack()
 
     # display deductions (nested frame)
-    nested_frame_2 = tk.Frame(tax_frame, bg="#a8dadc", pady=10, height=200, width=230, padx=1)
-    nested_frame_2.place(x=258, y=50)
+    nested_frame_2 = tk.Frame(tax_frame, bg="#a8dadc", )
+    nested_frame_2.place(x=258, y=50, height=200, width=230)
+
+    # You will receive
+    label = tk.Label(nested_frame_2, 
+                     text="You will receive", 
+                     bg="#a8dadc", 
+                     font=("Arial", 14, "bold"))
+    label.pack(pady=(10, 0))
+    label_sal = tk.Label(nested_frame_2, 
+                     text="PHP100", 
+                     bg="#a8dadc",
+                     fg="green", 
+                     font=("Arial", 14, "bold"))
+    label_sal.pack(pady=(1, 0))
+
+    # sss
+    label_sss = tk.Label(nested_frame_2, 
+                     text="SSS: ", 
+                     bg="#a8dadc",
+                     fg="red", 
+                     font=("Arial", 9))
+    label_sss.pack(side="top", anchor="w", pady=(20,3))
+
+    # philhealth
+    label_philhealth = tk.Label(nested_frame_2, 
+                     text="PHILHEALTH: ", 
+                     bg="#a8dadc",
+                     fg="red", 
+                     font=("Arial", 9))
+    label_philhealth.pack(side="top", anchor="w", pady=(0,5))
+
+    # pagibig
+    label_pagibig = tk.Label(nested_frame_2, 
+                     text="PAGIBIG: ", 
+                     bg="#a8dadc",
+                     fg="red", 
+                     font=("Arial", 9))
+    label_pagibig.pack(side="top", anchor="w", pady=(0,5))
 
     button = tk.Button(tax_frame,
                     text="⬅️ Return to Menu", 
