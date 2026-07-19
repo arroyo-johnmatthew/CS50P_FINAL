@@ -170,7 +170,9 @@ def get_widgets(parent):
                     activeforeground="#5c5d5e",
                     bg="white",
                     fg="#5c5d5e",
-                    command=lambda: switch_frame(main_frame, tax_frame),
+                    command=lambda: (error_label.config(text=""), 
+                                     entry.delete(0, "end"),
+                                     switch_frame(main_frame, tax_frame)),
                     cursor="hand2",
                     bd=0,
                     padx=20)
