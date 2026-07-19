@@ -1,6 +1,5 @@
 import tkinter as tk
 import webbrowser
-from tkinter import ttk
 
 def switch_frame(show, hide):
     hide.pack_forget()
@@ -13,6 +12,19 @@ def redirect(num):
         "https://www.pagibigfundservices.com/virtualpagibig/Membership.aspx",
     )
     webbrowser.open(links[num])
+
+def calculate(entry, label):
+    user_value = entry.get()
+
+    if not user_value.strip():
+        label.config(text="No input", fg="red")
+    else:
+        try:
+            user_value = int(entry.get())
+        except ValueError:
+            label.config(text="Input must be a number", fg="red")
+        else:
+            label.config(text="Success!", fg="green")
 
 def main():
     # set root widget
@@ -100,9 +112,14 @@ def get_widgets(parent):
                         bg="#1d3557",
                         fg="white",
                         cursor="hand2",
+                        command=lambda: calculate(entry, error_label),
                         bd=0,
                         padx=5)
     button.pack()
+
+    # error label
+    error_label = tk.Label(nested_frame_1, text="", bg="#a8dadc")
+    error_label.pack(side="bottom", anchor="center", pady=(0,5))
 
     # display deductions (nested frame)
     nested_frame_2 = tk.Frame(tax_frame, bg="#a8dadc", )
