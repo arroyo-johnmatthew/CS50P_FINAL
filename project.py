@@ -142,7 +142,7 @@ def get_widgets(parent):
     label_sss = tk.Label(nested_frame_2, 
                      text="SSS: ", 
                      bg="#a8dadc",
-                     fg="red", 
+                     fg="black", 
                      font=("Arial", 9))
     label_sss.pack(side="top", anchor="w", pady=(20,3))
 
@@ -150,7 +150,7 @@ def get_widgets(parent):
     label_philhealth = tk.Label(nested_frame_2, 
                      text="PHILHEALTH: ", 
                      bg="#a8dadc",
-                     fg="red", 
+                     fg="black", 
                      font=("Arial", 9))
     label_philhealth.pack(side="top", anchor="w", pady=(0,5))
 
@@ -158,7 +158,7 @@ def get_widgets(parent):
     label_pagibig = tk.Label(nested_frame_2, 
                      text="PAGIBIG: ", 
                      bg="#a8dadc",
-                     fg="red", 
+                     fg="black", 
                      font=("Arial", 9))
     label_pagibig.pack(side="top", anchor="w", pady=(0,5))
 
