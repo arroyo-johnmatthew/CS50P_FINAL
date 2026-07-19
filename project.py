@@ -51,6 +51,7 @@ def get_widgets(parent):
                     activebackground="white",
                     activeforeground="#a9d6e5",
                     fg="white",
+                    command=lambda: switch_frame(tax_frame, main_frame),
                     cursor="hand2",
                     bd=0,
                     padx=20)
@@ -70,6 +71,24 @@ def get_widgets(parent):
                     padx=20)
     button.pack(pady=15, side="bottom")
 
+    # =====================    REGISTER FRAME  =============================  
+    tax_frame = tk.Frame(parent)
+    tax_frame.config(bg="white")
+
+    button = tk.Button(tax_frame,
+                    text="⬅️ Return to Menu", 
+                    font=("Arial", 11, "bold"), 
+                    relief="flat",
+                    activebackground="white",
+                    activeforeground="#5c5d5e",
+                    bg="white",
+                    fg="#5c5d5e",
+                    command=lambda: switch_frame(main_frame, tax_frame),
+                    cursor="hand2",
+                    bd=0,
+                    padx=20)
+    button.pack(pady=15, side="bottom")
+    
     # =====================    REGISTER FRAME  =============================  
     reg_frame = tk.Frame(parent)
     reg_frame.config(bg="white")
@@ -129,6 +148,7 @@ def get_widgets(parent):
                         padx=30)
     button.place(x=159, y=180)
 
+    # Return button
     button = tk.Button(reg_frame,
                     text="⬅️ Return to Menu", 
                     font=("Arial", 11, "bold"), 
