@@ -7,11 +7,11 @@ def switch_frame(show, hide):
     show.pack(fill="both", expand=True)
 
 def redirect(num):
-    links = [
+    links = (
         "https://www.sss.gov.ph/become-an-sss-member/",
         "https://memberinquiry.philhealth.gov.ph/member/pinApplication.xhtml",
         "https://www.pagibigfundservices.com/virtualpagibig/Membership.aspx",
-        ]
+    )
     webbrowser.open(links[num])
 
 def main():
