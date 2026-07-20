@@ -10,7 +10,7 @@ def main():
     # set the bg color and size then call the widgets
     root.configure(background="#FFFFFF")
     root.resizable(False, False)
-    widgets, widgets2 = get_widgets(root)
+    widgets= get_widgets(root)
 
     # run the GUI
     widgets.pack(fill="both", expand=True)
@@ -260,7 +260,7 @@ def get_widgets(parent):
                     padx=20)
     button.pack(pady=15, side="bottom")
 
-    return main_frame, reg_frame
+    return main_frame
 
 if __name__ == "__main__":
     main()
