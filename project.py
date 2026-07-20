@@ -17,11 +17,14 @@ def main():
     root.mainloop()
 
 def calculate(entry, label):
+    # get the entry value
     user_value = entry.get()
 
+    # check if the value is empty
     if not user_value.strip():
         label.config(text="No input", fg="red")
 
+    # if not, check if it is negative number,  a string. otherwise, it is a success
     else:
         try:
             user_value = int(entry.get())  
