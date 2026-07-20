@@ -1,31 +1,6 @@
 import tkinter as tk
 import webbrowser
 
-def switch_frame(show, hide):
-    hide.pack_forget()
-    show.pack(fill="both", expand=True)
-
-def redirect(num):
-    links = (
-        "https://www.sss.gov.ph/become-an-sss-member/",
-        "https://memberinquiry.philhealth.gov.ph/member/pinApplication.xhtml",
-        "https://www.pagibigfundservices.com/virtualpagibig/Membership.aspx",
-    )
-    webbrowser.open(links[num])
-
-def calculate(entry, label):
-    user_value = entry.get()
-
-    if not user_value.strip():
-        label.config(text="No input", fg="red")
-    else:
-        try:
-            user_value = int(entry.get())
-        except ValueError:
-            label.config(text="Input must be a number", fg="red")
-        else:
-            label.config(text="Success!", fg="green")
-
 def main():
     # set root widget
     root = tk.Tk()
@@ -40,6 +15,36 @@ def main():
     # run the GUI
     widgets.pack(fill="both", expand=True)
     root.mainloop()
+
+def calculate(entry, label):
+    user_value = entry.get()
+
+    if not user_value.strip():
+        label.config(text="No input", fg="red")
+
+    else:
+        try:
+            user_value = int(entry.get())  
+
+            if user_value < 0:
+                label.config(text="Negative number is not allowed", fg="red")
+            else:
+                label.config(text="Success!", fg="green")
+
+        except ValueError:
+            label.config(text="Input must be a number", fg="red")
+
+def switch_frame(show, hide):
+    hide.pack_forget()
+    show.pack(fill="both", expand=True)
+
+def redirect(num):
+    links = (
+        "https://www.sss.gov.ph/become-an-sss-member/",
+        "https://memberinquiry.philhealth.gov.ph/member/pinApplication.xhtml",
+        "https://www.pagibigfundservices.com/virtualpagibig/Membership.aspx",
+    )
+    webbrowser.open(links[num])
 
 def get_widgets(parent):
     # =====================    MAIN FRAME  ============================= 
