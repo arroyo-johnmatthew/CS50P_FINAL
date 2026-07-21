@@ -184,7 +184,7 @@ def get_widgets(parent):
                     bg="white",
                     fg="#5c5d5e",
                     command=lambda: (error_label.config(text=""), 
-                                     label_sal.config(text=""), 
+                                     label_sal.config(text="PHP"), 
                                      entry.delete(0, "end"),
                                      switch_frame(main_frame, tax_frame)),
                     cursor="hand2",
