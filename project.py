@@ -16,13 +16,16 @@ def main():
     widgets.pack(fill="both", expand=True)
     root.mainloop()
 
-def calculate(entry, label):
+def display_sal(val, salary_label):
+    salary_label.config(text=f"PHP{val:,}", fg="green")
+
+def calculate(entry, state_label, salary_label):
     # get the entry value
     user_value = entry.get()
 
     # check if the value is empty
     if not user_value.strip():
-        label.config(text="No input", fg="red")
+        state_label.config(text="No input", fg="red")
 
     # if not, check if it is negative number,  a string. otherwise, it is a success
     else:
@@ -30,12 +33,13 @@ def calculate(entry, label):
             user_value = int(entry.get())  
 
             if user_value < 0:
-                label.config(text="Negative number is not allowed", fg="red")
+                state_label.config(text="Negative number is not allowed", fg="red")
             else:
-                label.config(text="Success!", fg="green")
+                state_label.config(text="Success!", fg="green")
+                display_sal(user_value, salary_label)
 
         except ValueError:
-            label.config(text="Input must be a number", fg="red")
+            state_label.config(text="Input must be a number", fg="red")
 
 def switch_frame(show, hide):
     hide.pack_forget()
@@ -120,7 +124,7 @@ def get_widgets(parent):
                         bg="#1d3557",
                         fg="white",
                         cursor="hand2",
-                        command=lambda: calculate(entry, error_label),
+                        command=lambda: calculate(entry, error_label, label_sal),
                         bd=0,
                         padx=5)
     button.pack()
@@ -140,7 +144,7 @@ def get_widgets(parent):
                      font=("Arial", 14, "bold"))
     label.pack(pady=(10, 0))
     label_sal = tk.Label(nested_frame_2, 
-                     text="PHP100", 
+                     text="PHP", 
                      bg="#a8dadc",
                      fg="green", 
                      font=("Arial", 14, "bold"))
@@ -170,6 +174,7 @@ def get_widgets(parent):
                      font=("Arial", 9))
     label_pagibig.pack(side="top", anchor="w", pady=(0,5))
 
+    # return to menu
     button = tk.Button(tax_frame,
                     text="⬅️ Return to Menu", 
                     font=("Arial", 11, "bold"), 
