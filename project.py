@@ -16,8 +16,9 @@ def main():
     widgets.pack(fill="both", expand=True)
     root.mainloop()
 
-def display_sal(val, salary_label):
-    salary_label.config(text=f"PHP{val:,}", fg="green")
+# TODO create a function that its param is an int and returns an int
+def display_sal(val=0):
+    return val 
 
 def calculate(entry, state_label, salary_label):
     # get the entry value
@@ -35,8 +36,9 @@ def calculate(entry, state_label, salary_label):
             if user_value < 0:
                 state_label.config(text="Negative number is not allowed", fg="red")
             else:
+                # Calculations and results will display on this block
                 state_label.config(text="Success!", fg="green")
-                display_sal(user_value, salary_label)
+                salary_label.config(text=f"PHP{display_sal(user_value):,}", fg="green")
 
         except ValueError:
             state_label.config(text="Input must be a number", fg="red")
