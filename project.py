@@ -17,7 +17,7 @@ def main():
     root.mainloop()
 
 # TODO create a function that its param is an int and returns an int
-def display_sal(val=0):
+def display_take_home_pay(val=0):
     return val 
 
 def calculate(entry, state_label, salary_label):
@@ -38,7 +38,7 @@ def calculate(entry, state_label, salary_label):
             else:
                 # Calculations and results will display on this block
                 state_label.config(text="Success!", fg="green")
-                salary_label.config(text=f"PHP{display_sal(user_value):,}", fg="green")
+                salary_label.config(text=f"PHP{display_take_home_pay(user_value):,}", fg="green")
 
         except ValueError:
             state_label.config(text="Input must be a number", fg="red")
