@@ -17,7 +17,7 @@ def main():
     root.mainloop()
 
 # TODO create a function that its param is an int and returns an int
-def display_take_home_pay(val=0):
+def display_take_home_pay(val=0.0):
     return val 
 
 def sss_deduction(salary):
@@ -46,7 +46,7 @@ def calculate(entry, state_label, salary_label):
     # if not, check if it is negative number,  a string. otherwise, it is a success
     else:
         try:
-            user_value = int(entry.get())  
+            user_value = float(entry.get())  
 
             if user_value < 0:
                 state_label.config(text="Negative number is not allowed", fg="red")
@@ -61,7 +61,7 @@ def calculate(entry, state_label, salary_label):
                 # Display the take home pay
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(
-                    text=f"PHP{display_take_home_pay(user_value):,}", 
+                    text=f"PHP{display_take_home_pay(user_value):,.2f}", 
                     fg="green"
                 )
 
@@ -177,29 +177,53 @@ def get_widgets(parent):
                      font=("Arial", 14, "bold"))
     label_sal.pack(pady=(1, 0))
 
-    # sss
-    label_sss = tk.Label(nested_frame_2, 
+    # sss_deduction_frame
+    sss_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
+    label_sss = tk.Label(sss_frame, 
                      text="SSS: ", 
                      bg="#a8dadc",
                      fg="black", 
                      font=("Arial", 9))
-    label_sss.pack(side="top", anchor="w", pady=(20,3))
+    label_sss.pack(side="left", anchor="w", padx=(0,140))
+    label_sss_deduction = tk.Label(sss_frame, 
+                         text="-P250.00", 
+                         bg="#a8dadc",
+                         fg="red", 
+                         font=("Arial", 9))
+    label_sss_deduction.pack(side="left", anchor="w")
+    sss_frame.pack(pady=(15,0))
 
-    # philhealth
-    label_philhealth = tk.Label(nested_frame_2, 
-                     text="PHILHEALTH: ", 
-                     bg="#a8dadc",
-                     fg="black", 
-                     font=("Arial", 9))
-    label_philhealth.pack(side="top", anchor="w", pady=(0,5))
+    # philhealth_deduction_frame
+    philhealth_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
+    label_philhealth = tk.Label(philhealth_frame, 
+                        text="PHILHEALTH: ", 
+                        bg="#a8dadc",
+                        fg="black", 
+                        font=("Arial", 9))
+    label_philhealth.pack(side="left", anchor="w", padx=(0,90))
+    label_philhealth_deduction = tk.Label(philhealth_frame, 
+                            text="-P250.00", 
+                            bg="#a8dadc",
+                            fg="red", 
+                            font=("Arial", 9))
+    label_philhealth_deduction.pack(side="left", anchor="w")
+    philhealth_frame.pack(pady=(0,0))
 
-    # pagibig
-    label_pagibig = tk.Label(nested_frame_2, 
-                     text="PAGIBIG: ", 
-                     bg="#a8dadc",
-                     fg="black", 
-                     font=("Arial", 9))
-    label_pagibig.pack(side="top", anchor="w", pady=(0,5))
+    # pagibig_deduction_frame
+    pagibig_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
+    label_pagibig = tk.Label(pagibig_frame, 
+                        text="PAGIBIG: ", 
+                        bg="#a8dadc",
+                        fg="black", 
+                        font=("Arial", 9))
+    label_pagibig.pack(side="left", anchor="w", padx=(0,117))
+    label_pagibig_deduction = tk.Label(pagibig_frame, 
+                            text="-P250.00", 
+                            bg="#a8dadc",
+                            fg="red", 
+                            font=("Arial", 9))
+    label_pagibig_deduction.pack(side="left", anchor="w")
+    pagibig_frame.pack(pady=(0,0))
 
     # return to menu
     button = tk.Button(tax_frame,
