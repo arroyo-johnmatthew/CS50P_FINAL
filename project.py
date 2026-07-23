@@ -37,6 +37,7 @@ def calculate(entry, state_label, salary_label):
                 state_label.config(text="Negative number is not allowed", fg="red")
             else:
                 # Calculations and results will display on this block
+                # Display the take home pay
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(text=f"PHP{display_take_home_pay(user_value):,}", fg="green")
 
