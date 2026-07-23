@@ -204,14 +204,14 @@ def get_widgets(parent):
                      bg="#a8dadc",
                      fg="black", 
                      font=("Arial", 9))
-    label_sss.pack(side="left", anchor="w", padx=(0,140))
+    label_sss.pack(side="left")
     label_sss_deduction = tk.Label(sss_frame, 
-                         text="-P250.00", 
+                         text="-P250,000,150.00", 
                          bg="#a8dadc",
                          fg="red", 
                          font=("Arial", 9))
-    label_sss_deduction.pack(side="left", anchor="w")
-    sss_frame.pack(pady=(15,0))
+    label_sss_deduction.pack(side="right")
+    sss_frame.pack(fill="x", pady=(15,0))
 
     # philhealth_deduction_frame
     philhealth_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
@@ -220,14 +220,14 @@ def get_widgets(parent):
                         bg="#a8dadc",
                         fg="black", 
                         font=("Arial", 9))
-    label_philhealth.pack(side="left", anchor="w", padx=(0,90))
+    label_philhealth.pack(side="left")
     label_philhealth_deduction = tk.Label(philhealth_frame, 
                             text="-P250.00", 
                             bg="#a8dadc",
                             fg="red", 
                             font=("Arial", 9))
-    label_philhealth_deduction.pack(side="left", anchor="w")
-    philhealth_frame.pack(pady=(0,0))
+    label_philhealth_deduction.pack(side="right")
+    philhealth_frame.pack(fill="x", pady=(0,0))
 
     # pagibig_deduction_frame
     pagibig_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
@@ -236,14 +236,14 @@ def get_widgets(parent):
                         bg="#a8dadc",
                         fg="black", 
                         font=("Arial", 9))
-    label_pagibig.pack(side="left", anchor="w", padx=(0,117))
+    label_pagibig.pack(side="left")
     label_pagibig_deduction = tk.Label(pagibig_frame, 
                             text="-P250.00", 
                             bg="#a8dadc",
                             fg="red", 
                             font=("Arial", 9))
-    label_pagibig_deduction.pack(side="left", anchor="w")
-    pagibig_frame.pack(pady=(0,0))
+    label_pagibig_deduction.pack(side="right")
+    pagibig_frame.pack(fill="x", pady=(0,0))
 
     # return to menu
     button = tk.Button(tax_frame,
