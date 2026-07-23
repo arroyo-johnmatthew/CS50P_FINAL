@@ -20,6 +20,15 @@ def main():
 def display_take_home_pay(val=0):
     return val 
 
+def sss_deduction(salary):
+    pass
+
+def philhealth_deduction(salary):
+    pass
+
+def pagibig_deduction(salary):
+    pass
+
 # This is the function that will run once the button "submit" is pressed
 def calculate(entry, state_label, salary_label):
     # get the entry value
@@ -43,9 +52,18 @@ def calculate(entry, state_label, salary_label):
                 state_label.config(text="Negative number is not allowed", fg="red")
             else:
                 # Calculations and results will display on this block
+
+                # Get the SSS deduction price
+                sss = sss_deduction(user_value)
+                philhealth = philhealth_deduction(user_value)
+                pagibig = pagibig_deduction(user_value)
+
                 # Display the take home pay
                 state_label.config(text="Success!", fg="green")
-                salary_label.config(text=f"PHP{display_take_home_pay(user_value):,}", fg="green")
+                salary_label.config(
+                    text=f"PHP{display_take_home_pay(user_value):,}", 
+                    fg="green"
+                )
 
         except ValueError:
             state_label.config(text="Input must be a number", fg="red")
