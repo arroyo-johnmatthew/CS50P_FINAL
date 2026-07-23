@@ -17,17 +17,33 @@ def main():
     root.mainloop()
 
 # TODO create a function that its param is an int and returns an int
-def display_take_home_pay(val=0.0):
-    return val 
+def display_take_home_pay(val, sss, philhealth, pagibig):
+    total = sss + philhealth + pagibig
+    return val - total
 
 def sss_deduction(salary):
-    pass
+    if salary < 5000:
+        return 250
+    elif salary >= 5000 and salary <= 35000:
+        return salary * 0.05
+    elif salary > 35000: 
+        return 1750
 
 def philhealth_deduction(salary):
-    pass
+    if salary < 10000:
+        return 250
+    elif salary >= 10000 and salary <= 100000:
+        return salary * 0.025
+    elif salary > 100000:
+        return 2500
 
 def pagibig_deduction(salary):
-    pass
+    if salary <= 1500:
+        return salary * 0.01
+    elif salary > 1500 and salary < 10000:
+        return salary * 0.02
+    elif salary >= 10000:
+        return 200
 
 # This is the function that will run once the button "submit" is pressed
 def calculate(entry, state_label, salary_label):
@@ -61,7 +77,11 @@ def calculate(entry, state_label, salary_label):
                 # Display the take home pay
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(
-                    text=f"PHP{display_take_home_pay(user_value):,.2f}", 
+                    text=f"PHP{display_take_home_pay(
+                        user_value, 
+                        sss, 
+                        philhealth, 
+                        pagibig):,.2f}", 
                     fg="green"
                 )
 
