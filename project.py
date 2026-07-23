@@ -20,9 +20,15 @@ def main():
 def display_take_home_pay(val=0):
     return val 
 
+# This is the function that will run once the button "submit" is pressed
 def calculate(entry, state_label, salary_label):
     # get the entry value
     user_value = entry.get()
+
+    # initialize the gov contribution deduction variables
+    sss = 0
+    philhealth = 0
+    pagibig = 0
 
     # check if the value is empty
     if not user_value.strip():
