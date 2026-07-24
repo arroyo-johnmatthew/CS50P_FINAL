@@ -55,7 +55,7 @@ def calculate(
         philhealth_deduc):
 
     # first of all, clear all the text if user encountered an error state
-    salary_label.config(text="")
+    salary_label.config(text="P")
     sss_deduc.config(text="")
     pagibig_deduc.config(text="")
     philhealth_deduc.config(text="")
