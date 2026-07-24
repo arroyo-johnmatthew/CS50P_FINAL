@@ -53,7 +53,13 @@ def calculate(
         sss_deduc, 
         pagibig_deduc, 
         philhealth_deduc):
-    
+
+    # first of all, clear all the text if user encountered an error state
+    salary_label.config(text="")
+    sss_deduc.config(text="")
+    pagibig_deduc.config(text="")
+    philhealth_deduc.config(text="")
+
     # get the entry value
     user_value = entry.get()
 
@@ -172,6 +178,16 @@ def get_widgets(parent):
     # input field
     entry = tk.Entry(nested_frame_1, relief="flat", justify="center")
     entry.pack(pady=10)
+
+    # enhanced version (press enter then it will call calculate() func)
+    entry.bind("<Return>", lambda event: calculate(
+        entry,
+        error_label,
+        label_sal, 
+        label_sss_deduction, 
+        label_pagibig_deduction, 
+        label_philhealth_deduction,
+    ))
     
     # submit button
     button = tk.Button(nested_frame_1,
@@ -225,7 +241,7 @@ def get_widgets(parent):
                      font=("Arial", 9))
     label_sss.pack(side="left")
     label_sss_deduction = tk.Label(sss_frame, 
-                         text="-P250,000,150.00", 
+                         text="", 
                          bg="#a8dadc",
                          fg="red", 
                          font=("Arial", 9))
@@ -241,7 +257,7 @@ def get_widgets(parent):
                         font=("Arial", 9))
     label_philhealth.pack(side="left")
     label_philhealth_deduction = tk.Label(philhealth_frame, 
-                            text="-P250.00", 
+                            text="", 
                             bg="#a8dadc",
                             fg="red", 
                             font=("Arial", 9))
@@ -257,7 +273,7 @@ def get_widgets(parent):
                         font=("Arial", 9))
     label_pagibig.pack(side="left")
     label_pagibig_deduction = tk.Label(pagibig_frame, 
-                            text="-P250.00", 
+                            text="", 
                             bg="#a8dadc",
                             fg="red", 
                             font=("Arial", 9))
