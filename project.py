@@ -46,7 +46,14 @@ def pagibig_deduction(salary):
         return 200
 
 # This is the function that will run once the button "submit" is pressed
-def calculate(entry, state_label, salary_label):
+def calculate(
+        entry, 
+        state_label, 
+        salary_label, 
+        sss_deduc, 
+        pagibig_deduc, 
+        philhealth_deduc):
+    
     # get the entry value
     user_value = entry.get()
 
@@ -74,7 +81,7 @@ def calculate(entry, state_label, salary_label):
                 philhealth = philhealth_deduction(user_value)
                 pagibig = pagibig_deduction(user_value)
 
-                # Display the take home pay
+                # Display the take home pay and the deductions
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(
                     text=f"PHP{display_take_home_pay(
@@ -84,6 +91,10 @@ def calculate(entry, state_label, salary_label):
                         pagibig):,.2f}", 
                     fg="green"
                 )
+
+                sss_deduc.config(text=f"-P{sss:,.2f}")
+                pagibig_deduc.config(text=f"-P{pagibig:,.2f}")
+                philhealth_deduc.config(text=f"-P{philhealth:,.2f}")
 
         except ValueError:
             state_label.config(text="Input must be a number", fg="red")
@@ -171,7 +182,13 @@ def get_widgets(parent):
                         bg="#1d3557",
                         fg="white",
                         cursor="hand2",
-                        command=lambda: calculate(entry, error_label, label_sal),
+                        command=lambda: calculate(
+                            entry, 
+                            error_label, 
+                            label_sal, 
+                            label_sss_deduction, 
+                            label_pagibig_deduction, 
+                            label_philhealth_deduction),
                         bd=0,
                         padx=5)
     button.pack()
