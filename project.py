@@ -67,7 +67,9 @@ def calculate(
         salary_label, 
         sss_deduc, 
         pagibig_deduc, 
-        philhealth_deduc):
+        philhealth_deduc,
+        total_tax,
+        total_deduction):
 
     # first of all, clear all the text if user encountered an error state
     salary_label.config(text="PHP")
@@ -124,6 +126,8 @@ def calculate(
                 sss_deduc.config(text=f"-P{sss:,.2f}")
                 pagibig_deduc.config(text=f"-P{pagibig:,.2f}")
                 philhealth_deduc.config(text=f"-P{philhealth:,.2f}")
+                total_tax.config(text=f"-P{withholding_tax:,.2f}")
+                total_deduction.config(text=f"-P{withholding_tax:,.2f}")
 
         except ValueError:
             state_label.config(text="Input must be a number", fg="red")
@@ -208,6 +212,8 @@ def get_widgets(parent):
         label_sss_deduction, 
         label_pagibig_deduction, 
         label_philhealth_deduction,
+        label_tax_deduction,
+        label_total_deduction
     ))
     
     # submit button
@@ -227,7 +233,9 @@ def get_widgets(parent):
                             label_sal, 
                             label_sss_deduction, 
                             label_pagibig_deduction, 
-                            label_philhealth_deduction),
+                            label_philhealth_deduction,
+                            label_tax_deduction,
+                            label_total_deduction),
                         bd=0,
                         padx=5)
     button.pack()
@@ -301,6 +309,38 @@ def get_widgets(parent):
     label_pagibig_deduction.pack(side="right")
     pagibig_frame.pack(fill="x", pady=(0,0))
 
+    # withholding_tax_deduction_frame
+    withholding_tax_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
+    label_tax = tk.Label(withholding_tax_frame, 
+                        text="WITHHOLDING TAX: ", 
+                        bg="#a8dadc",
+                        fg="black", 
+                        font=("Arial", 7))
+    label_tax.pack(side="left")
+    label_tax_deduction = tk.Label(withholding_tax_frame, 
+                            text="", 
+                            bg="#a8dadc",
+                            fg="red", 
+                            font=("Arial", 7))
+    label_tax_deduction.pack(side="right")
+    withholding_tax_frame.pack(fill="x", pady=(15,0))
+
+    # total_deductions_frame
+    total_deduction_frame = tk.Frame(nested_frame_2, bg="#a8dadc")
+    label_total = tk.Label(total_deduction_frame, 
+                        text="TOTAL: ", 
+                        bg="#a8dadc",
+                        fg="black", 
+                        font=("Arial", 7))
+    label_total.pack(side="left")
+    label_total_deduction = tk.Label(total_deduction_frame, 
+                            text="", 
+                            bg="#a8dadc",
+                            fg="red", 
+                            font=("Arial", 7))
+    label_total_deduction.pack(side="right")
+    total_deduction_frame.pack(fill="x", pady=(0,0))
+
     # return to menu
     button = tk.Button(tax_frame,
                     text="⬅️ Return to Menu", 
@@ -315,6 +355,8 @@ def get_widgets(parent):
                                      label_pagibig_deduction.config(text=""),
                                      label_philhealth_deduction.config(text=""),
                                      label_sss_deduction.config(text=""),
+                                     label_total_deduction.config(text=""),
+                                     label_tax_deduction.config(text=""),
                                      entry.delete(0, "end"),
                                      switch_frame(main_frame, tax_frame)),
                     cursor="hand2",
