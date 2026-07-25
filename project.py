@@ -20,20 +20,8 @@ def main():
 def get_taxable_income(val, sss, philhealth, pagibig):
     return val - (sss + philhealth + pagibig)
 
-# Get the withholding tax
-def calculate_withholding_tax(txbl_inc):
-    if txbl_inc <= 20833.00:
-        return 0.00
-    elif txbl_inc <= 33332.00:
-        return (txbl_inc - 20833.00) * 0.15
-    elif txbl_inc <= 66666.00:
-        return 1875.00 + ((txbl_inc - 33333.00) * 0.20)
-    elif txbl_inc <= 166666.00:
-        return 8541.80 + ((txbl_inc - 66667.00) * 0.25)
-    elif txbl_inc <= 666666.00:
-        return 33541.80 + ((txbl_inc - 166667.00) * 0.30)
-    else:
-        return 183541.80 + ((txbl_inc - 666667.00) * 0.35)
+def get_overall_deductions(sss, philhealth, pagibig, withholding_tax):
+    return withholding_tax + (sss + philhealth + pagibig)
 
 # Get Gov contribution deductions
 def sss_deduction(salary):
@@ -60,6 +48,21 @@ def pagibig_deduction(salary):
     elif salary >= 10000:
         return 200
 
+# Get the withholding tax
+def calculate_withholding_tax(txbl_inc):
+    if txbl_inc <= 20833.00:
+        return 0.00
+    elif txbl_inc <= 33332.00:
+        return (txbl_inc - 20833.00) * 0.15
+    elif txbl_inc <= 66666.00:
+        return 1875.00 + ((txbl_inc - 33333.00) * 0.20)
+    elif txbl_inc <= 166666.00:
+        return 8541.80 + ((txbl_inc - 66667.00) * 0.25)
+    elif txbl_inc <= 666666.00:
+        return 33541.80 + ((txbl_inc - 166667.00) * 0.30)
+    else:
+        return 183541.80 + ((txbl_inc - 666667.00) * 0.35)
+
 # This is the function that will run once the button "submit" is pressed
 def calculate(
         entry, 
@@ -76,6 +79,8 @@ def calculate(
     sss_deduc.config(text="")
     pagibig_deduc.config(text="")
     philhealth_deduc.config(text="")
+    total_tax.config(text="")
+    total_deduction.config(text="")
 
     # get the entry value
     user_value = entry.get()
@@ -112,22 +117,31 @@ def calculate(
                                                     philhealth, 
                                                     pagibig)
 
-                # Now get the witholding tax (if there is) 
+                # Now get the witholding tax (if there is) and take home pay
                 withholding_tax = calculate_withholding_tax(taxable_income)
                 take_home_pay = taxable_income - withholding_tax
 
-                # Display the take home pay and the deductions
+                # Get the overall deductions (contributions + tax)
+                overall_deduction = get_overall_deductions(sss, 
+                                                           philhealth, 
+                                                           pagibig, 
+                                                           withholding_tax)
+
+                # Display the take home pay 
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(
                     text=f"PHP{take_home_pay:,.2f}", 
                     fg="green"
                 )
 
+                # Display the Gov Contribution Deductions
                 sss_deduc.config(text=f"-P{sss:,.2f}")
                 pagibig_deduc.config(text=f"-P{pagibig:,.2f}")
                 philhealth_deduc.config(text=f"-P{philhealth:,.2f}")
+
+                # Display the withholding tax and overall deduction
                 total_tax.config(text=f"-P{withholding_tax:,.2f}")
-                total_deduction.config(text=f"-P{withholding_tax:,.2f}")
+                total_deduction.config(text=f"-P{overall_deduction:,.2f}")
 
         except ValueError:
             state_label.config(text="Input must be a number", fg="red")
@@ -315,13 +329,13 @@ def get_widgets(parent):
                         text="WITHHOLDING TAX: ", 
                         bg="#a8dadc",
                         fg="black", 
-                        font=("Arial", 7))
+                        font=("Arial", 8))
     label_tax.pack(side="left")
     label_tax_deduction = tk.Label(withholding_tax_frame, 
                             text="", 
                             bg="#a8dadc",
                             fg="red", 
-                            font=("Arial", 7))
+                            font=("Arial", 8))
     label_tax_deduction.pack(side="right")
     withholding_tax_frame.pack(fill="x", pady=(15,0))
 
@@ -331,13 +345,13 @@ def get_widgets(parent):
                         text="TOTAL: ", 
                         bg="#a8dadc",
                         fg="black", 
-                        font=("Arial", 7))
+                        font=("Arial", 8))
     label_total.pack(side="left")
     label_total_deduction = tk.Label(total_deduction_frame, 
                             text="", 
                             bg="#a8dadc",
                             fg="red", 
-                            font=("Arial", 7))
+                            font=("Arial", 8))
     label_total_deduction.pack(side="right")
     total_deduction_frame.pack(fill="x", pady=(0,0))
 
