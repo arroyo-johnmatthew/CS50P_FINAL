@@ -18,8 +18,8 @@ def main():
 
 # This is where the calculation happens
 def display_take_home_pay(val, sss, philhealth, pagibig):
-    total = sss + philhealth + pagibig
-    return val - total
+    taxable_income = val - (sss + philhealth + pagibig)
+    return taxable_income
 
 def sss_deduction(salary):
     if salary < 5000:
@@ -291,6 +291,9 @@ def get_widgets(parent):
                     fg="#5c5d5e",
                     command=lambda: (error_label.config(text=""), 
                                      label_sal.config(text="PHP"), 
+                                     label_pagibig_deduction.config(text=""),
+                                     label_philhealth_deduction.config(text=""),
+                                     label_sss_deduction.config(text=""),
                                      entry.delete(0, "end"),
                                      switch_frame(main_frame, tax_frame)),
                     cursor="hand2",
