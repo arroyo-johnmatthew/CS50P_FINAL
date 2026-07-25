@@ -16,7 +16,7 @@ def main():
     widgets.pack(fill="both", expand=True)
     root.mainloop()
 
-# TODO create a function that its param is an int and returns an int
+# This is where the calculation happens
 def display_take_home_pay(val, sss, philhealth, pagibig):
     total = sss + philhealth + pagibig
     return val - total
@@ -82,7 +82,7 @@ def calculate(
             elif user_value < 5000.0:
                 state_label.config(text="Salary must be or above P5000", fg="red")
             else:
-                # Calculations and results will display on this block
+                # Results and func calling will display on this block
 
                 # Get the SSS deduction price
                 sss = sss_deduction(user_value)
