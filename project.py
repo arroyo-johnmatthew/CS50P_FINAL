@@ -20,6 +20,7 @@ def main():
 def get_taxable_income(val, sss, philhealth, pagibig):
     return val - (sss + philhealth + pagibig)
 
+# Get the withholding tax
 def calculate_withholding_tax(txbl_inc):
     if txbl_inc <= 20833.00:
         return 0.00
@@ -34,6 +35,7 @@ def calculate_withholding_tax(txbl_inc):
     else:
         return 183541.80 + ((txbl_inc - 666667.00) * 0.35)
 
+# Get Gov contribution deductions
 def sss_deduction(salary):
     if salary < 5000:
         return 250
