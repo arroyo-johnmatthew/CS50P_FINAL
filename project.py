@@ -20,6 +20,20 @@ def main():
 def get_taxable_income(val, sss, philhealth, pagibig):
     return val - (sss + philhealth + pagibig)
 
+def calculate_withholding_tax(txbl_inc):
+    if txbl_inc <= 20833.00:
+        return 0.00
+    elif txbl_inc <= 33332.00:
+        return (txbl_inc - 20833.00) * 0.15
+    elif txbl_inc <= 66666.00:
+        return 1875.00 + ((txbl_inc - 33333.00) * 0.20)
+    elif txbl_inc <= 166666.00:
+        return 8541.80 + ((txbl_inc - 66667.00) * 0.25)
+    elif txbl_inc <= 666666.00:
+        return 33541.80 + ((txbl_inc - 166667.00) * 0.30)
+    else:
+        return 183541.80 + ((txbl_inc - 666667.00) * 0.35)
+
 def sss_deduction(salary):
     if salary < 5000:
         return 250
@@ -94,10 +108,14 @@ def calculate(
                                                     philhealth, 
                                                     pagibig)
 
+                # Now get the witholding tax (if there is) 
+                withholding_tax = calculate_withholding_tax(taxable_income)
+                take_home_pay = taxable_income - withholding_tax
+
                 # Display the take home pay and the deductions
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(
-                    text=f"PHP{taxable_income:,.2f}", 
+                    text=f"PHP{take_home_pay:,.2f}", 
                     fg="green"
                 )
 
