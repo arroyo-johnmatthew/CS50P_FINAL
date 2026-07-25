@@ -17,9 +17,8 @@ def main():
     root.mainloop()
 
 # This is where the calculation happens
-def display_take_home_pay(val, sss, philhealth, pagibig):
-    taxable_income = val - (sss + philhealth + pagibig)
-    return taxable_income
+def get_taxable_income(val, sss, philhealth, pagibig):
+    return val - (sss + philhealth + pagibig)
 
 def sss_deduction(salary):
     if salary < 5000:
@@ -84,19 +83,21 @@ def calculate(
             else:
                 # Results and func calling will display on this block
 
-                # Get the SSS deduction price
+                # Get the Government Deduction amounts
                 sss = sss_deduction(user_value)
                 philhealth = philhealth_deduction(user_value)
                 pagibig = pagibig_deduction(user_value)
 
+                # Get the taxable income (salary - total deduction)
+                taxable_income = get_taxable_income(user_value, 
+                                                    sss, 
+                                                    philhealth, 
+                                                    pagibig)
+
                 # Display the take home pay and the deductions
                 state_label.config(text="Success!", fg="green")
                 salary_label.config(
-                    text=f"PHP{display_take_home_pay(
-                        user_value, 
-                        sss, 
-                        philhealth, 
-                        pagibig):,.2f}", 
+                    text=f"PHP{taxable_income:,.2f}", 
                     fg="green"
                 )
 
