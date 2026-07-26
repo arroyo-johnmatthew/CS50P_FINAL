@@ -102,8 +102,8 @@ def calculate(
 
             if user_value < 0:
                 state_label.config(text="Negative number is not allowed", fg="red")
-            elif user_value < 5000.0:
-                state_label.config(text="Salary must be or above P5000", fg="red")
+            elif user_value < 510.0:
+                state_label.config(text="Salary must be or above P510", fg="red")
             else:
                 # Results and func calling will display on this block
 
