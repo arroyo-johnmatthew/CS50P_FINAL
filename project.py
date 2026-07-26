@@ -1,5 +1,6 @@
 import tkinter as tk
 import webbrowser
+import sys
 
 def main():
     # set root widget
@@ -184,7 +185,22 @@ def get_widgets(parent):
                     cursor="hand2",
                     bd=0,
                     padx=20)
-    button.pack(pady=8)
+    button.pack(pady=(45,0))
+
+    button = tk.Button(main_frame,
+                        text="Exit", 
+                        font=("Arial", 11, "bold"), 
+                        width=10,
+                        relief="raised",
+                        bg="#a9d6e5",
+                        activebackground="white",
+                        activeforeground="#a9d6e5",
+                        fg="white",
+                        command=lambda:sys.exit(),
+                        cursor="hand2",
+                        bd=0,
+                        padx=20)
+    button.pack(pady=(10,0))
 
     button = tk.Button(main_frame,
                     text="Setup Your Government Contributions", 
