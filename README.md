@@ -77,7 +77,7 @@
 
     - **Bracket 4 (₱66,666.01 to ₱166,666.00):** ₱8,541.80 base tax + 25% of the excess over ₱66,667.00.
 
-    - **Bracket 5 (₱166,666.01 to ₱666,666.00):** ₱33,541.80 base tax + 30% of the excess over ₱166,677.00.
+    - **Bracket 5 (₱166,666.01 to ₱666,666.00):** ₱33,541.80 base tax + 30% of the excess over ₱166,667.00.
 
     - **Bracket 6 (Above ₱666,666.00):** ₱183,541.80 base tax + 35% of the excess over ₱666,667.00.
 
@@ -87,8 +87,8 @@
         ELSE IF taxable_income <= 33332 THEN Tax = (taxable_income - 20833) * 0.15
         ELSE IF taxable_income <= 66666 THEN Tax = 1875.00 + ((taxable_income - 33333) * 0.20)
         ELSE IF taxable_income <= 166666 THEN Tax = 8541.80 + ((taxable_income - 66667) * 0.25)
-        ELSE IF taxable_income <= 666666 THEN Tax = 33541.80 + ((taxable_income - 166677) * 0.30)
-        ELSE Tax = 183541.80 + ((taxable_income - 666677) * 0.35)
+        ELSE IF taxable_income <= 666666 THEN Tax = 33541.80 + ((taxable_income - 166667) * 0.30)
+        ELSE Tax = 183541.80 + ((taxable_income - 666667) * 0.35)
         ```
 - To get your **Take Home Pay**, subtract the **Withholding Tax** from the **Taxable Income**
 
