@@ -1,7 +1,7 @@
 # 💼 🇵🇭 CORPORATE BUDDY 💼
 
 ## 📓 Overview
-- #### Video Demo:
+- #### Video Demo: [CS50P PROJECT PRESENTATION](https://youtu.be/NP6NSsZ86V4)
 - #### Description: *This is my first python project called Corporate Buddy. It's a simple tax calculator tool tailored for pre-employment citizens here in the Philippines.*
 
 ## ❓ Why Create This Project?
